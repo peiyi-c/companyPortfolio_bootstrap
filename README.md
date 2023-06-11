@@ -7,7 +7,7 @@
 ## 
 ## Notes
 
-* JavaScript by [peiyi-c](https://github.com/peiyi-c)
+* JavaScript by [Pei-Yi C.](https://github.com/peiyi-c)
 * HTML&CSS from [Bootstrap-5-portfolio-template](https://github.com/MuriungiPatrick/Bootstrap-5-portfolio-template)
 
 
