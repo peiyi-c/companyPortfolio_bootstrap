@@ -1,10 +1,12 @@
 /* DATA */
 import { companies, clients, works } from './assets/js/data.js'
 
-/*  COMPANIES CONTENT  */
-
 const companyContent = document.querySelector('.company-content')
+const clientContent = document.querySelector('.client-content')
+const projectContent = document.querySelector('.project-content')
+const filterBtns = document.querySelectorAll('.filter-btn')
 
+/*  COMPANIES CONTENT  */
 function renderCompanyContent(items) {
   let rawHTML = ""
   items.forEach((item) => {
@@ -24,11 +26,7 @@ function renderCompanyContent(items) {
 renderCompanyContent(companies)
 
 /*  CLIENT CONTENT  */
-
 /* content */
-
-const clientContent = document.querySelector('.client-content')
-
 function renderClientContent(items) {
   let rawHTML = ""
   items.forEach((item) => {
@@ -59,20 +57,16 @@ function renderClientContent(items) {
   clientContent.innerHTML = rawHTML
   clientContent.firstElementChild.classList.add('active')
 }
-
 renderClientContent(clients)
 
 /* rating */
-
 const clientRatings = document.querySelectorAll('.ratings')
-
 function renderRatings(item) {
   clientRatings.forEach((clientRating) => {
     let i = clientRating.dataset.id - 1
     clientRating.innerHTML = generateRatings(item[i]["rating"])
   })
 }
-
 function generateRatings(num) {
   let rawHTML = ""
   for (let i = 1; i <= num; i++) {
@@ -80,13 +74,9 @@ function generateRatings(num) {
   }
   return rawHTML
 }
-
 renderRatings(clients)
 
 /*  PROJECT CONTENT  */
-const projectContent = document.querySelector('.project-content')
-const filterBtns = document.querySelector('.filter-btns')
-
 function renderProjectContent(items) {
   let rawHTML = ""
   items.forEach((item) => {
@@ -107,15 +97,15 @@ function renderProjectContent(items) {
   })
   projectContent.innerHTML = rawHTML
 }
-
 renderProjectContent(works)
 
 /* FILTER PROJECTS CONTENT */
-filterBtns.addEventListener('click', (e) => {
-  let cate = e.target.innerText
-  cate === "All" ? renderProjectContent(works) : renderProjectContent(filterWorks(cate))
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    let category = e.target.innerText
+    category === "All" ? renderProjectContent(works) : renderProjectContent(filterWorks(category))
+  })
 })
-
 function filterWorks(cate) {
   return works.filter((work) => work.category === cate)
 }
